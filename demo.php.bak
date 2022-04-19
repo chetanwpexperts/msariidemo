@@ -212,17 +212,16 @@ $(document).ready(function()
 		$('input[name="jobcheck[]"]:checked').each(function(index, item) {
 			arr.push(this.value);
 			rowids.push($(item).attr('data-row-id'));
-			indexsas = $(item).attr('data-row-id');
 		});
 		console.log(rowids);
 		//var selectedJobs = $(".src-table2 input:checked").parents("tr").clone();
 		if(arr.length == 1)
 		{
 			rows = "";
-			var job = $("#jobinfo_"+indexsas).attr('data-name-'+indexsas);
-			var jid = $("#jobinfo_"+indexsas).attr('data-tr-id_'+indexsas);
+			var student = $("#check_"+indexsas).attr('data-name-'+indexsas);
+			var sid = $("#check_"+indexsas).attr('data-tr-id_'+indexsas);
 
-			rows+= '<th colspan="2" style="width:50%">'+job+' </th> <th colspan="2" style="width:50%"><ul class="grades"><li><input type="radio" name="grade" class="form-control grade" /> A </li><li><input type="radio" name="grade" class="form-control grade" /> B </li><li><input type="radio" name="grade" class="form-control grade" /> C </li><li><input type="radio" name="grade" class="form-control grade" /> D </li><li><input type="radio" name="grade" class="form-control grade" /> E </li></ul></th>';
+			rows+= '<tr><td style="width:10%;"><input type="checkbox" name="check" class="form-control check" /></td><td>'+sid+'</td><td>'+student+' <br /> <button type="button" class="btn btn-primary mybutton" data-toggle="modal" data-target="#exampleModal2" data-student="'+sid+'">Job Info</button></td><td style="width:50%;"><ul class="grades"><li><input type="radio" name="grade" class="form-control grade" /> A </li><li><input type="radio" name="grade" class="form-control grade" /> B </li><li><input type="radio" name="grade" class="form-control grade" /> C </li><li><input type="radio" name="grade" class="form-control grade" /> D </li><li><input type="radio" name="grade" class="form-control grade" /> E </li></ul></td><td><a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a></td></tr><tr id="job_description_'+sid+'"></tr>';
 		}else{
 			for (j = 0; j < arr.length; ++j)
 			{
