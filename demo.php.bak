@@ -154,6 +154,13 @@ input.form-control.grade {
 }
 </style>
 <script>
+function genCharArray(charA, charZ) {
+	var a = [], i = charA.charCodeAt(0), j = charZ.charCodeAt(0);
+	for (; i <= j; ++i) {
+		a.push(String.fromCharCode(i));
+	}
+	return a;
+}
 $(document).ready(function()
 {
 	$('[data-toggle="tooltip"]').tooltip();
@@ -176,21 +183,27 @@ $(document).ready(function()
 			 arr.push(this.value);
 			 indexsas = $(item).attr('data-row-id');
 		});
+		console.log("length " + arr.length);
 		//var rowId = $(".src-table1 input:checked").parents("tr").attr('data-tr-id');
-		mainArr.push(arr);
-		console.log(mainArr.length);
-		console.log(indexsas);
 		if(arr.length == 1)
 		{
 			rows = "";
 			var student = $("#check_"+indexsas).attr('data-name-'+indexsas);
 			var sid = $("#check_"+indexsas).attr('data-tr-id_'+indexsas);
 
-			rows+= '<tr><td style="width:10%;"><input type="checkbox" name="check" class="form-control check" /></td><td>'+sid+'</td><td>'+student+' <br /> <button type="button" class="btn btn-primary mybutton" data-toggle="modal" data-target="#exampleModal2" data-student="'+sid+'">Job Info</button></td><td style="width:50%;"><ul class="grades"><li><input type="radio" name="grade" class="form-control grade" /> A </li><li><input type="radio" name="grade" class="form-control grade" /> B </li><li><input type="radio" name="grade" class="form-control grade" /> C </li><li><input type="radio" name="grade" class="form-control grade" /> D </li><li><input type="radio" name="grade" class="form-control grade" /> E </li></ul></td><td><a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a></td></tr><tr id="job_description_'+sid+'"></tr>';
+			rows+= '<tr><td style="width:10%;"><input type="checkbox" name="check" class="form-control check" /></td><td>'+sid+'</td><td>'+student+' <br /> <button type="button" class="btn btn-primary mybutton" data-toggle="modal" data-target="#exampleModal2" data-student="'+sid+'">Job Info</button></td><td style="width:50%;"><ul class="grades"><li><input type="radio" name="grade" class="form-control grade" /> E </li><li><input type="radio" name="grade" class="form-control grade" /> G </li><li><input type="radio" name="grade" class="form-control grade" /> C </li><li><input type="radio" name="grade" class="form-control grade" /> D </li><li><input type="radio" name="grade" class="form-control grade" /> B </li></ul></td><td><a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a></td></tr><tr id="job_description_'+sid+'"></tr>';
+		}else if(arr.length > 1){
+			alert(arr.length);
+			for (i = 0; i < arr.length; ++i)
+			{
+				var student = $("#check_"+i).attr('data-name-'+i);
+				var sid = $("#check_"+i).attr('data-tr-id_'+i);
+
+				rows+= '<tr><td style="width:10%;"><input type="checkbox" name="check" class="form-control check" /></td><td>'+sid+'</td><td>'+student+' <br /> <button type="button" class="btn btn-primary mybutton" data-toggle="modal" data-target="#exampleModal2" data-student="'+sid+'">Job Info</button></td><td style="width:50%;"><ul class="grades"><li><input type="radio" name="grade" class="form-control grade" /> A </li><li><input type="radio" name="grade" class="form-control grade" /> B </li><li><input type="radio" name="grade" class="form-control grade" /> C </li><li><input type="radio" name="grade" class="form-control grade" /> D </li><li><input type="radio" name="grade" class="form-control grade" /> E </li></ul></td><td><a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a></td></tr><tr id="job_description_'+sid+'"></tr>';
+			}
 		}else{
 			for (i = 0; i < arr.length; ++i)
 			{
-				rows = "";
 				var student = $("#check_"+i).attr('data-name-'+i);
 				var sid = $("#check_"+i).attr('data-tr-id_'+i);
 
@@ -212,24 +225,33 @@ $(document).ready(function()
 		$('input[name="jobcheck[]"]:checked').each(function(index, item) {
 			arr.push(this.value);
 			rowids.push($(item).attr('data-row-id'));
+			indexsas = $(item).attr('data-row-id');
 		});
 		console.log(rowids);
 		//var selectedJobs = $(".src-table2 input:checked").parents("tr").clone();
+		var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 		if(arr.length == 1)
 		{
 			rows = "";
-			var student = $("#check_"+indexsas).attr('data-name-'+indexsas);
-			var sid = $("#check_"+indexsas).attr('data-tr-id_'+indexsas);
+			var job = $("#jobinfo_"+indexsas).attr('data-name-'+indexsas);
+			var jid = $("#jobinfo_"+indexsas).attr('data-tr-id_'+indexsas);
 
-			rows+= '<tr><td style="width:10%;"><input type="checkbox" name="check" class="form-control check" /></td><td>'+sid+'</td><td>'+student+' <br /> <button type="button" class="btn btn-primary mybutton" data-toggle="modal" data-target="#exampleModal2" data-student="'+sid+'">Job Info</button></td><td style="width:50%;"><ul class="grades"><li><input type="radio" name="grade" class="form-control grade" /> A </li><li><input type="radio" name="grade" class="form-control grade" /> B </li><li><input type="radio" name="grade" class="form-control grade" /> C </li><li><input type="radio" name="grade" class="form-control grade" /> D </li><li><input type="radio" name="grade" class="form-control grade" /> E </li></ul></td><td><a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a></td></tr><tr id="job_description_'+sid+'"></tr>';
-		}else{
+			rows+= '<td></td><td>'+alphabet[0].toUpperCase()+'</td><td>'+job+' </td> <td><ul class="grades"><li><input type="radio" name="grade" class="form-control grade" /> A </li><li><input type="radio" name="grade" class="form-control grade" /> B </li><li><input type="radio" name="grade" class="form-control grade" /> C </li><li><input type="radio" name="grade" class="form-control grade" /> D </li><li><input type="radio" name="grade" class="form-control grade" /> E </li></ul></td><td></td>';
+		}else if(arr.length > 1){
 			for (j = 0; j < arr.length; ++j)
 			{
-				rows = "";
 				var job = $("#jobinfo_"+j).attr('data-name-'+j);
 				var jid = $("#jobinfo_"+j).attr('data-tr-id_'+j);
 
-				rows+= '<th colspan="2" style="width:50%">'+job+' </th> <th colspan="2" style="width:50%"><ul class="grades"><li><input type="radio" name="grade" class="form-control grade" /> A </li><li><input type="radio" name="grade" class="form-control grade" /> B </li><li><input type="radio" name="grade" class="form-control grade" /> C </li><li><input type="radio" name="grade" class="form-control grade" /> D </li><li><input type="radio" name="grade" class="form-control grade" /> E </li></ul></th>';
+				rows+= '<td></td><td>'+alphabet[j].toUpperCase()+'</td><td>'+job+' </td> <td><ul class="grades"><li><input type="radio" name="grade" class="form-control grade" /> A </li><li><input type="radio" name="grade" class="form-control grade" /> B </li><li><input type="radio" name="grade" class="form-control grade" /> C </li><li><input type="radio" name="grade" class="form-control grade" /> D </li><li><input type="radio" name="grade" class="form-control grade" /> E </li></ul></td><td></td>';
+			}
+		}else{
+			for (j = 0; j < arr.length; ++j)
+			{
+				var job = $("#jobinfo_"+j).attr('data-name-'+j);
+				var jid = $("#jobinfo_"+j).attr('data-tr-id_'+j);
+
+				rows+= '<td></td><td>'+alphabet[j].toUpperCase()+'</td><td>'+job+' </td> <td><ul class="grades"><li><input type="radio" name="grade" class="form-control grade" /> A </li><li><input type="radio" name="grade" class="form-control grade" /> B </li><li><input type="radio" name="grade" class="form-control grade" /> C </li><li><input type="radio" name="grade" class="form-control grade" /> D </li><li><input type="radio" name="grade" class="form-control grade" /> E </li></ul></td><td></td><tr id="job_description_'+stId+'"></tr>';
 			}
 		}
 		$("#job_description_"+stId).append(rows);
@@ -239,7 +261,6 @@ $(document).ready(function()
 		var studentId = $(this).attr("data-student");
 		$("#submitjob").attr("data-studentid", studentId);
 	});
-	
 });
 
 </script>
