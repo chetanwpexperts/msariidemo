@@ -243,7 +243,7 @@ $(document).ready(function()
 				var job = $("#jobinfo_"+j).attr('data-name-'+j);
 				var jid = $("#jobinfo_"+j).attr('data-tr-id_'+j);
 
-				rows+= '<td></td><td>'+alphabet[j].toUpperCase()+'</td><td>'+job+' </td> <td><ul class="grades"><li><input type="radio" name="grade" class="form-control grade" /> A </li><li><input type="radio" name="grade" class="form-control grade" /> B </li><li><input type="radio" name="grade" class="form-control grade" /> C </li><li><input type="radio" name="grade" class="form-control grade" /> D </li><li><input type="radio" name="grade" class="form-control grade" /> E </li></ul></td><td></td>';
+				rows+= '<td></td><td>'+alphabet[j].toUpperCase()+'</td><td>'+job+' </td> <td><ul class="grades"><li><input type="radio" name="grade" class="form-control grade" /> A </li><li><input type="radio" name="grade" class="form-control grade" /> B </li><li><input type="radio" name="grade" class="form-control grade" /> C </li><li><input type="radio" name="grade" class="form-control grade" /> D </li><li><input type="radio" name="grade" class="form-control grade" /> E </li></ul></td><td></td></tr>';
 			}
 		}else{
 			for (j = 0; j < arr.length; ++j)
@@ -251,7 +251,7 @@ $(document).ready(function()
 				var job = $("#jobinfo_"+j).attr('data-name-'+j);
 				var jid = $("#jobinfo_"+j).attr('data-tr-id_'+j);
 
-				rows+= '<td></td><td>'+alphabet[j].toUpperCase()+'</td><td>'+job+' </td> <td><ul class="grades"><li><input type="radio" name="grade" class="form-control grade" /> A </li><li><input type="radio" name="grade" class="form-control grade" /> B </li><li><input type="radio" name="grade" class="form-control grade" /> C </li><li><input type="radio" name="grade" class="form-control grade" /> D </li><li><input type="radio" name="grade" class="form-control grade" /> E </li></ul></td><td></td><tr id="job_description_'+stId+'"></tr>';
+				rows+= '<td></td><td>'+alphabet[j].toUpperCase()+'</td><td>'+job+' </td> <td><ul class="grades"><li><input type="radio" name="grade" class="form-control grade" /> A </li><li><input type="radio" name="grade" class="form-control grade" /> B </li><li><input type="radio" name="grade" class="form-control grade" /> C </li><li><input type="radio" name="grade" class="form-control grade" /> D </li><li><input type="radio" name="grade" class="form-control grade" /> E </li></ul></td><td></td>';
 			}
 		}
 		$("#job_description_"+stId).append(rows);
