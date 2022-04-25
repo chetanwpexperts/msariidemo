@@ -91,12 +91,13 @@ img.remove_button {
 <script>
 jQuery(document).ready(function($)
 {
-    var maxField = 10;
+    var maxField = 10; // limit
     var addButton = $('.add_button');
     var wrapper = $('.field_wrapper');
-    var fieldHTML = '<div><input class="form-control" type="text" name="name[]" value=""/> <img src="remove-icon.png" style="width:6%;" class="remove_button" /></div>';
+    var fieldHTML = '<div><input class="form-control" type="text" name="name[]" value="" required /> <img src="remove-icon.png" style="width:6%;" class="remove_button" /></div>';
     var x = 1;
     
+	// add input row
     $(addButton).click(function()
 	{
         if(x < maxField)
@@ -106,6 +107,7 @@ jQuery(document).ready(function($)
         }
     });
     
+	// delete input row
     $(wrapper).on('click', '.remove_button', function(e)
 	{
         $(this).parent('div').remove();
@@ -132,7 +134,7 @@ jQuery(document).ready(function($)
 									<div class="col-md-6">
 										<div class="form-group field_wrapper">
 											<div>
-												<input type="text" name="name[]" class="form-control" value=""/> 
+												<input type="text" name="name[]" class="form-control" value="" required /> 
 											</div>
 										</div>
 									</div>
