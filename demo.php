@@ -287,7 +287,7 @@ $(document).ready(function()
 					<p>&nbsp;</p>
 					<table class="table table-bordered target-table">
 							<thead>
-								<tr>
+								<tr> 
 									<th style="width: 10%;">#</th>
 									<th style="width: 5%;">Id</th>
 									<th style="width: 10%;">Name</th>
