@@ -171,8 +171,7 @@ jQuery(document).ready(function($)
 										?>
 										<tr id="check_<?php echo $i;?>" data-total-record="<?php echo $totalphases;?>" data-tr-id_<?php echo $i;?>="<?php echo $phase['id'];?>" data-name-<?php echo $i;?>="<?php echo $phase['name'];?>">
 											<td><?php echo $phase['id'];?></td>
-											<td><?php echo $phase['name'];?></td>
-											
+											<td><a href="phase_view.php?id=<?php echo $phase['id'];?>"><?php echo $phase['name'];?></a></td>
 										</tr>
 										<?php
 										$i++;
